@@ -3,10 +3,29 @@ function Translate(){
 
 	var baseUrlService = "http://api.mymemory.translated.net/get"
 	var textAreaTranslated = $('#textTranslated')
+	var selectedText = ""
 
 	var showDefaultError = function(e){
 		console.log(e)
 		alert('Oops, ocorreu um erro. Avise-nos sobre isso.')
+	}
+
+	var remoteTranslate = function(from, to, text){
+		var params = {
+			'q': text,
+			'langpair': from + "|" + to
+		}
+
+		$.ajax({
+			url: baseUrlService,
+			data: params,
+			success: function(result){
+				textAreaTranslated.text(result.responseData.translatedText)
+			},
+			error: function(e){
+				showDefaultError(e)
+			}
+		})
 	}
 
 
@@ -20,30 +39,14 @@ function Translate(){
 		if(!text){
 			// Captura o texto que está selecionado na página
 			chrome.tabs.getSelected(null, function(tab){
-			    chrome.tabs.executeScript(tab.id, {code: "$selectedText = document.getSelection().toString();"}, function(){
-			    	alert($selectedText)
-			    });
-			});
+		    chrome.tabs.executeScript(tab.id, {code: "document.getSelection().toString()"}, function(response) {
+		        selectedText = response[0]
+		        if(selectedText){
+		        	remoteTranslate(from, to, selectedText)
+		        }
+		    });
+		});
 		}
-
-		var params = {
-			'q': text,
-			'langpair': from + "|" + to
-		}
-
-		// $.ajax({
-		// 	url: baseUrlService,
-		// 	data: params,
-		// 	success: function(result){
-		// 		textAreaTranslated.text(result.responseData.translatedText)
-		// 	},
-		// 	error: function(e){
-		// 		showDefaultError(e)
-		// 	}
-		// })
-
-		textAreaTranslated.text($selectedText)
-
 	}
 }
 
