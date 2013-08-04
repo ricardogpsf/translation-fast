@@ -1,34 +1,21 @@
 <!doctype html>
 <html>
   <head>
-    <title>Getting Started Extension's Popup</title>
-    <style>
-      body {
-        min-width: 357px;
-        overflow-x: hidden;
-      }
-
-      img {
-        margin: 5px;
-        border: 2px solid black;
-        vertical-align: middle;
-        width: 75px;
-        height: 75px;
-      }
-    </style>
-
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
-     -->
+    <title>Translate</title>
     <script src="jquery.min.js"></script>
     <script src="popup.js"></script>
+    <link rel="stylesheet" href="Style.css" />
   </head>
   <body>
-    <textarea id="textTranslated" rows="4" cols="50">
-    </textarea>
+      <select name="to">
+          <option value="en">Ingles</option>
+          <option value="pt">Portuques</option>
+      </select>
+      &rightarrow;
+      <select name="from">
+          <option value="pt">Portuques</option>
+          <option value="en">Ingles</option>
+      </select>
+      <textarea id="textTranslated" rows="4" cols="50" placeholder="Selecione um texto para a tradu&ccedil;&atilde;o"></textarea>
   </body>
 </html>
-
