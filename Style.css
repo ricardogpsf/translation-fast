@@ -1,0 +1,16 @@
+select{
+    background: #FFF;
+    color: #222;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    padding: 4px;
+}
+select:focus, select:hover{
+    border-radius: 5px 5px 0 0;
+}
+#textTranslated{
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    padding: 5px;
+    font: 12px/16px "Verdana";
+}
