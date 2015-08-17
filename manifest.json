@@ -2,11 +2,11 @@
   "manifest_version": 2,
 
   "name": "Fast-Translate",
-  "description": "This extension easy you life, tranlate real time very fast!",
+  "description": "This extension easy you life, translate real time very fast!",
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "icon_brasil.png",
     "default_popup": "popup.html"
   },
 
